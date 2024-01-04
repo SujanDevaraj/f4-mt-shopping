@@ -1,5 +1,6 @@
 import {useDispatch} from "react-redux"
 import {addProductsToCart} from "../redux/ActionCreators"
+import PropTypes from 'prop-types';
 
 const Product = ({product}) => {
   const dispatch=useDispatch();
@@ -17,6 +18,14 @@ const Product = ({product}) => {
       <button className="addToCart_Btn" onClick={()=>dispatch(addProductsToCart(product))}>Add To Cart</button>
     </div>
   );
+};
+Product.propTypes = {
+  product: PropTypes.shape({
+    images: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    // Add other properties if necessary
+  }).isRequired,
 };
 
 export default Product;
